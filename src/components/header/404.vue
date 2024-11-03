@@ -1,0 +1,10 @@
+<template>
+  <nav>
+      <NuxtImg
+        format="webp"
+        width="350"
+        src="/logo.png"
+        @click="$router.push('/')"
+      />
+  </nav>
+</template>

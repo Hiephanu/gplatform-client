@@ -1,0 +1,12 @@
+* {
+  font-family: 'DM Sans', sans-serif;
+}
+
+@font-face {
+  font-family: 'DM Sans Medium';
+  src: url('../../fonts/DMSans-Medium.ttf');
+}
+
+.font-medium {
+  font-family: 'DM Sans Medium';
+}
