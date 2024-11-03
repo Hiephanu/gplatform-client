@@ -14,8 +14,12 @@
 </template>
 
 <script lang="ts" setup>
-const welcomeSection = ref<HTMLElement | null>(null);
+import { APP_NAME } from '~/const/config';
+  const welcomeSection = ref<HTMLElement | null>(null);
 
+definePageMeta({
+  title: `Home - ${APP_NAME}`,
+});
 const handleScroll = () => {
   if (welcomeSection.value) {
     welcomeSection.value.scrollIntoView({ behavior: 'smooth' });

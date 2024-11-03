@@ -69,6 +69,11 @@
 </template>
 <script setup lang="ts">
 import type { JobDescription, JobItem } from '~/types/recruitment/job';
+import { APP_NAME } from '~/const/config';
+
+definePageMeta({
+  title: `Job detail - ${APP_NAME}`,
+});
 
 const router = useRoute();
 const { id: jobId } = router.params;

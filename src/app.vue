@@ -8,20 +8,9 @@
 </template>
 
 <script setup>
-const route = useRoute();
-const APP_NAME = 'Google Developer Student Clubs - HANU';
+const route = useRoute()
 
-const capitalizeFirstLetter = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-watch(
-  () => route.name,
-  (name) => {
-    const pageTitle = name === 'index' ? 'Homepage' : capitalizeFirstLetter(name);
-    useHead({
-      title: `${pageTitle} - ${APP_NAME}`,
-    });
-  },
-  { immediate: true }
-);
+useHead({
+  title: `${route.meta.title}`
+})
 </script>

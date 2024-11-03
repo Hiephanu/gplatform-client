@@ -21,10 +21,16 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
+import { APP_NAME } from '~/const/config';
+
 const beadcumbLinks = ref([
   { label: 'Home', to: '/' },
   { label: 'Recruitment', to: '/recruitment' },
   { label: 'Opening', to: '/recruitment/opening' },
 ]);
+
+definePageMeta({
+  title: `Opening Position - ${APP_NAME}`,
+});
 </script>
