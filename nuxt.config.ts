@@ -14,10 +14,32 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/eslint',
   ],
+
   colorMode: {
     preference: 'light',
   },
+
   devtools: { enabled: true },
   srcDir: 'src',
   css: ['~/assets/css/global.css', '~/assets/css/variables.css'],
+
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', href: '/favicon.ico', id: 'favicon' }
+      ],
+    },
+  },
+
+  vite: {
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag === 'favicon'
+        }
+      }
+    }
+  },
+
+  compatibilityDate: '2024-11-03',
 });
