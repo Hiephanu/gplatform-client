@@ -11,7 +11,7 @@
 const route = useRoute();
 const APP_NAME = 'Google Developer Student Clubs - HANU';
 
-const capitalizeFirstLetter = (string: string) => {
+const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 watch(
