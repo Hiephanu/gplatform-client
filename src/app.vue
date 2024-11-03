@@ -11,10 +11,13 @@
 const route = useRoute();
 const APP_NAME = 'Google Developer Student Clubs - HANU';
 
+const capitalizeFirstLetter = (string: string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 watch(
   () => route.name,
   (name) => {
-    const pageTitle = name === 'index' ? 'Homepage' : name;
+    const pageTitle = name === 'index' ? 'Homepage' : capitalizeFirstLetter(name);
     useHead({
       title: `${pageTitle} - ${APP_NAME}`,
     });
