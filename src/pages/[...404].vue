@@ -2,8 +2,8 @@
   <div class="max-h-full">
     <div class="flex flex-col text-center w-full p-8">
       <div class="flex justify-center items-center w-full h-full">
-        <video autoplay loop muted class="w-[700px] sm:h-[400px] h-[200px] object-contain">
-          <source :src="videoURL" type="video/mp4" />
+        <video preload="auto" autoplay loop muted class="w-[700px] sm:h-[400px] h-[200px] object-contain">
+          <source :src="VIDEO_404" type="video/mp4" />
         </video>
       </div>
       <span class="sm:text-xl text-xs my-6">
@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 
-const videoURL = '/404.mp4';
+const VIDEO_404 = '/404.mp4';
 
 definePageMeta({
   title: `Page not found`,
