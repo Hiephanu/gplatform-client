@@ -19,11 +19,13 @@
     "@nuxt/eslint": "^0.3.13",
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.18.7",
+    "@nuxthub/core": "^0.8.7",
     "@nuxtjs/google-fonts": "^3.2.0",
     "eslint": "^9.5.0",
     "nuxt": "^3.10.1",
     "prettier": "^3.3.2",
-    "prettier-plugin-tailwindcss": "^0.6.5"
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "wrangler": "^3.91.0"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
