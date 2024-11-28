@@ -24,10 +24,10 @@
 </template>
 
 <script setup lang="ts">
-import { APP_NAME } from '~/const/config';
+
 const videoURL = '/404.mp4';
 
 definePageMeta({
-  title: `Page not found - ${APP_NAME}`,
+  title: `Page not found`,
 });
 </script>

@@ -10,8 +10,8 @@
 </template>
 
 <script setup>
-import { APP_NAME } from '~/const/config';
+
 
 definePageMeta({
-  title: `Recruitment - ${APP_NAME}`,
+  title: `Recruitment`,
 });</script>

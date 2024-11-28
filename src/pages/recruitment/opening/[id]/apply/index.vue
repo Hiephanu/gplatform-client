@@ -9,12 +9,12 @@
 </template>
 
 <script setup lang="ts">
-import { APP_NAME } from '~/const/config';
+
 const router = useRoute();
 const { id: jobId } = router.params;
 
 definePageMeta({
-  title: `Apply form - ${APP_NAME}`,
+  title: `Apply form`,
 });
 const jobTitle = ref('Human Resources Engagement Lead');
 

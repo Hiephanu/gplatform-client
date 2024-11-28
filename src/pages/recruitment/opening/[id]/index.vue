@@ -69,10 +69,10 @@
 </template>
 <script setup lang="ts">
 import type { JobDescription, JobItem } from '~/types/recruitment/job';
-import { APP_NAME } from '~/const/config';
+
 
 definePageMeta({
-  title: `Job detail - ${APP_NAME}`,
+  title: `Job detail`,
 });
 
 const router = useRoute();

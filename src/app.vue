@@ -8,9 +8,5 @@
 </template>
 
 <script setup>
-const route = useRoute()
 
-useHead({
-  title: `${route.meta.title}`
-})
 </script>

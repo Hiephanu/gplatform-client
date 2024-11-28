@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { APP_NAME } from '~/const/config';
+
 
 const beadcumbLinks = ref([
   { label: 'Home', to: '/' },
@@ -31,6 +31,6 @@ const beadcumbLinks = ref([
 ]);
 
 definePageMeta({
-  title: `Opening Position - ${APP_NAME}`,
+  title: `Opening Position`,
 });
 </script>

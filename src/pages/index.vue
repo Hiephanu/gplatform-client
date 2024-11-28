@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts" setup>
-import { APP_NAME } from '~/const/config';
+
   const welcomeSection = ref<HTMLElement | null>(null);
 
 definePageMeta({
-  title: `Home - ${APP_NAME}`,
+  title: `Home`,
 });
 const handleScroll = () => {
   if (welcomeSection.value) {
