@@ -12,7 +12,7 @@
       </h2>
     </div>
     <ul class="list-disc space-y-1 pl-5 text-gray-950">
-      <li v-for="item in descriptionItems" :key="item.id">
+      <li v-for="item in description" :key="item.id">
         {{ item.content }}
       </li>
     </ul>
@@ -20,9 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import type { JobDescription , UiJobDescription} from '~/types/recruitment/job';
+import type { JobDescriptionDetail , UiJobDescription} from '~/types/recruitment/job';
 
-const { type, descriptionItems } = defineProps<JobDescription>();
+const { type, description } = defineProps<JobDescriptionDetail>();
 
 const jobDescription = computed(() => {
   return uiJobDescription.value.find((item) => item.type === type);

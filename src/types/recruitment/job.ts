@@ -13,15 +13,20 @@ export type DescriptionItem = {
   content: string;
 };
 
-export type DescriptionType = 'DO' | 'NEED' | 'OFFER'
+export type DescriptionType = 'DO' | 'NEED' | 'OFFER';
 
+export type JobDescriptionDetail = {
+  type: DescriptionType;
+  description: DescriptionItem[];
+};
 export type JobDescription = {
- type: DescriptionType
-  descriptionItems: DescriptionItem[];
+  title: string;
+  description: string;
+  detail: JobDescriptionDetail[];
 };
 
 export type UiJobDescription = {
-type: DescriptionType
-icon: string
-title: BrandText
-}
+  type: DescriptionType;
+  icon: string;
+  title: BrandText;
+};

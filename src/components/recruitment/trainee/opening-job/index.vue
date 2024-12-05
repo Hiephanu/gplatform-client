@@ -22,7 +22,7 @@
         class="my-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
       >
         <div v-for="searchQuery in searchQueryList" :key="searchQuery.id">
-          <SkeletonPosition></SkeletonPosition>
+          <RecruitmentJobItemSkeleton></RecruitmentJobItemSkeleton>
         </div>
       </UContainer>
     </template>
@@ -56,7 +56,7 @@
       <UButton
         label="Browse all jobs"
         icon="i-heroicons-arrow-small-right-solid"
-        trailing="false"
+        trailing
         class="cursor-pointer rounded-full px-4 py-2 text-white"
       ></UButton>
     </UContainer>

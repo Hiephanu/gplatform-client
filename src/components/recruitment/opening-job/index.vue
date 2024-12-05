@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <UContainer class="text-center">
+  <div class="mb-8">
+    <div class="text-center">
       <div class="flex flex-row items-center justify-center leading-10">
         <CommonBrandText
           label="Spotlight"
@@ -8,31 +8,26 @@
           class="text-2xl font-bold md:text-6xl"
         ></CommonBrandText>
       </div>
-    </UContainer>
-    <UContainer class="my-10 flex flex-row flex-wrap items-center justify-center gap-4">
+    </div>
+    <div class="my-10 flex flex-row flex-wrap items-center justify-center gap-4">
       <div v-for="item in department" :key="item.id">
         <UButton
           class="rounded-full"
           :color="activeTeamFilter === item.id ? 'primary' : 'white'"
-          :size="isDesktop ? 'xl' :'md'"
+          :size="isDesktop ? 'xl' : 'md'"
           @click="setFilter(item.id)"
           >{{ item.content }}</UButton
         >
       </div>
-    </UContainer>
-    <template v-if="isLoading">
-      <UContainer
-        v-if="searchQueryList.length"
-        class="my-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
-      >
-        <div v-for="searchQuery in searchQueryList" :key="searchQuery.id">
-          <RecruitmentJobItemSkeleton></RecruitmentJobItemSkeleton>
-        </div>
-      </UContainer>
-    </template>
-    <template v-else>
-      <UContainer
-        v-if="searchQueryList.length"
+    </div>
+    <div v-if="isLoading" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div v-for="searchQuery in searchQueryList" :key="searchQuery.id">
+        <RecruitmentJobItemSkeleton></RecruitmentJobItemSkeleton>
+      </div>
+    </div>
+    <div v-else>
+      <div
+        v-if="searchQueryList.length > 0"
         class="my-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
       >
         <div v-for="searchQuery in searchQueryList" :key="searchQuery.id">
@@ -44,33 +39,29 @@
             :description="searchQuery.description"
           ></RecruitmentJobItem>
         </div>
-      </UContainer>
-    </template>
-    <UContainer v-if="searchQueryList.length" class="mb-10 text-center">
-      <UButton
-        label="See more"
+      </div>
+      <p v-else></p>
+      <div class="flex justify-center">
+        <UButton
+        :color="searchQueryList.length > 0 ? 'white' : 'primary'"
+        :label="searchQueryList.length > 0 ? 'See more' : 'Browse all jobs'"
         icon="i-heroicons-arrow-small-right-solid"
-        class="cursor-pointer rounded-full border-2 border-solid border-gray-300 text-black transition duration-300 ease-in-out hover:bg-blue-50"
+        class="rounded-full"
+        size="xl"
+        trailing
       ></UButton>
-    </UContainer>
-    <UContainer v-else class="mb-10 text-center">
-      <p class="mb-10 text-2xl font-bold text-gray-600">More job openings are coming soon!</p>
-      <UButton
-        label="Browse all jobs"
-        icon="i-heroicons-arrow-small-right-solid"
-        :trailing="false"
-        class="cursor-pointer rounded-full px-4 py-2 text-white"
-      ></UButton>
-    </UContainer>
+      </div>
+      
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { DescriptionItem, JobItem } from '~/types/recruitment/job';
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
-const breakpoints = useBreakpoints(breakpointsTailwind)
-const isDesktop = breakpoints.greater('md')
+const breakpoints = useBreakpoints(breakpointsTailwind);
+const isDesktop = breakpoints.greater('md');
 
 const isLoading = ref(true);
 const activeTeamFilter = ref(1);
@@ -129,6 +120,10 @@ const searchQueryList = ref<JobItem[]>([
 const setFilter = (id: number) => {
   activeTeamFilter.value = id;
   // Call query here
+  isLoading.value = true;
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 2000);
 };
 
 setTimeout(() => {

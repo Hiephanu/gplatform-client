@@ -3,7 +3,7 @@
     <CommonBreadcumb :links="beadcumbLinks" />
     <UContainer class="flex w-full flex-col items-start justify-center gap-8 md:flex-row md:gap-16">
       <div class="flex flex-1 flex-col gap-4 md:gap-8">
-        <UButton size="xl" variant="ghost" label="Back" class="self-start">
+        <UButton class="w-fit" size="xl" variant="ghost" label="Back">
           <template #leading>
             <UIcon name="i-heroicons-arrow-small-left" class="text-primary h-6 w-6" />
           </template>
@@ -17,29 +17,25 @@
                 size="lg"
                 color="white"
                 label="Board of Leader"
-                class="cursor-pointer whitespace-nowrap hover:bg-gray-100"
+                class="whitespace-nowrap"
               />
               <UBadge
                 :ui="{ rounded: 'rounded-full' }"
                 size="lg"
                 color="white"
                 label="Core Team Member"
-                class="cursor-pointer whitespace-nowrap hover:bg-gray-100"
+                class="whitespace-nowra"
               />
             </div>
-          </div>
-          <div class="flex gap-2">
-            <UButton icon="i-heroicons-share" variant="ghost" color="gray" size="xl" />
-            <UButton icon="i-heroicons-bookmark" variant="ghost" color="gray" size="xl" />
           </div>
         </div>
         <p class="text-xs text-gray-950 md:text-base">
           This is short description of Job Description
         </p>
-        <div v-for="desc in jobDescriptions" :key="desc.type">
+        <div v-for="item in jobDescriptions.detail" :key="item.type">
           <RecruitmentJobDescription
-            :type="desc.type"
-            :description-items="desc.descriptionItems"
+            :type="item.type"
+            :description="item.description"
           />
         </div>
         <div class="flex w-full justify-center md:justify-start">
@@ -68,7 +64,6 @@
 </template>
 <script setup lang="ts">
 import type { JobDescription, JobItem } from '~/types/recruitment/job';
-
 
 definePageMeta({
   title: `Job detail`,
@@ -107,10 +102,13 @@ const jobItems = ref<JobItem[]>([
   },
 ]);
 
-const jobDescriptions = ref<JobDescription[]>([
+const jobDescriptions = ref<JobDescription>({
+  title: 'Human Resorces lead',
+  description: 'This is short description of Job Description',
+  detail: [
   {
     type: 'DO',
-    descriptionItems: [
+    description: [
       {
         id: 1,
         content:
@@ -140,7 +138,7 @@ const jobDescriptions = ref<JobDescription[]>([
   },
   {
     type: 'NEED',
-    descriptionItems: [
+    description: [
       {
         id: 1,
         content:
@@ -170,7 +168,7 @@ const jobDescriptions = ref<JobDescription[]>([
   },
   {
     type: 'OFFER',
-    descriptionItems: [
+    description: [
       {
         id: 1,
         content:
@@ -198,5 +196,5 @@ const jobDescriptions = ref<JobDescription[]>([
       },
     ],
   },
-]);
+]});
 </script>

@@ -1,14 +1,12 @@
 <template>
   <UContainer class="mt-16 flex w-full flex-col items-start">
-    <div class="flex max-w-[756px] flex-col gap-8">
-      <div class="flex items-center">
+    <div class="flex flex-col gap-8">
         <CommonBrandText
           label="Members"
           suffix="of us"
           color="blue-500"
           class="text-3xl font-bold md:text-8xl"
         />
-      </div>
       <div class="w-full text-wrap text-gray-950">
         Join us today and keep maximizing your potential thanks to working with the best talents, in
         sizable projects that impact on Tech Community.
