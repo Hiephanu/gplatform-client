@@ -10,28 +10,23 @@
       </div>
     </UContainer>
     <UContainer class="my-10 flex flex-row flex-wrap items-center justify-center gap-4">
-      <div v-for="(category, index) in categories" :key="category.id">
-        <UCard
-          :ui="{ strategy: 'override', body: '' }"
-          class="cursor-pointer rounded-full p-1 sm:px-3 sm:py-2"
-          :class="
-            clickState[index]
-              ? 'bg-primary text-white'
-              : 'transition duration-300 ease-in-out hover:bg-blue-50'
-          "
-          @click="() => handleStatus(index)"
+      <div v-for="item in department" :key="item.id">
+        <UButton
+          class="rounded-full"
+          :color="activeTeamFilter === item.id ? 'primary' : 'white'"
+          :size="isDesktop ? 'xl' :'md'"
+          @click="setFilter(item.id)"
+          >{{ item.content }}</UButton
         >
-          <p class="text-center text-xs sm:text-sm">{{ category.content }}</p>
-        </UCard>
       </div>
     </UContainer>
-    <template v-if="isPending">
+    <template v-if="isLoading">
       <UContainer
         v-if="searchQueryList.length"
         class="my-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
       >
         <div v-for="searchQuery in searchQueryList" :key="searchQuery.id">
-          <SkeletonPosition></SkeletonPosition>
+          <RecruitmentJobItemSkeleton></RecruitmentJobItemSkeleton>
         </div>
       </UContainer>
     </template>
@@ -53,7 +48,6 @@
     </template>
     <UContainer v-if="searchQueryList.length" class="mb-10 text-center">
       <UButton
-        v-if="searchQueryList.length > 6"
         label="See more"
         icon="i-heroicons-arrow-small-right-solid"
         class="cursor-pointer rounded-full border-2 border-solid border-gray-300 text-black transition duration-300 ease-in-out hover:bg-blue-50"
@@ -73,13 +67,19 @@
 
 <script setup lang="ts">
 import type { DescriptionItem, JobItem } from '~/types/recruitment/job';
-const isPending = ref(true);
-const categories = ref<DescriptionItem[]>([
-  { id: '1', content: 'Board of Leader' },
-  { id: '2', content: 'Technical Department' },
-  { id: '3', content: 'Marketing Department' },
-  { id: '4', content: 'Event Department' },
-  { id: '5', content: 'Human Resources Department' },
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+const isDesktop = breakpoints.greater('md')
+
+const isLoading = ref(true);
+const activeTeamFilter = ref(1);
+const department = ref<DescriptionItem[]>([
+  { id: 1, content: 'Board of Leader' },
+  { id: 2, content: 'Technical Department' },
+  { id: 3, content: 'Marketing Department' },
+  { id: 4, content: 'Event Department' },
+  { id: 5, content: 'Human Resources Department' },
 ]);
 const searchQueryList = ref<JobItem[]>([
   {
@@ -125,15 +125,13 @@ const searchQueryList = ref<JobItem[]>([
     description: 'Develop the products and tools of the future for billions of users.',
   },
 ]);
-const clickState = ref<boolean[]>(new Array(categories.value.length).fill(false));
 
-const handleStatus = (index: number) => {
-  clickState.value = clickState.value.map((state: boolean, i: number) =>
-    i === index ? true : false,
-  );
+const setFilter = (id: number) => {
+  activeTeamFilter.value = id;
+  // Call query here
 };
 
 setTimeout(() => {
-  isPending.value = false;
+  isLoading.value = false;
 }, 2000);
 </script>

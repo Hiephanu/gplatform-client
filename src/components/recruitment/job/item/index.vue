@@ -18,18 +18,7 @@ import type { JobItem } from '~/types/recruitment/job.ts';
 
 const props = defineProps<JobItem>();
 
-const COLOR_TAG = [
-  {
-    tag: 'New',
-    color: 'primary',
-  },
-  {
-    tag: 'Hot',
-    color: 'red',
-  },
-];
-
 const color = computed(() => {
-  return COLOR_TAG.find((item) => item.tag === props.tag)?.color;
+  return props.tag === 'Hot' ? 'red' : 'primary';
 });
 </script>

@@ -6,11 +6,11 @@ const routes = ref([
 </script>
 
 <template>
-  <div class="fixed top-0 z-50 w-full bg-white px-4 py-4 text-black shadow-md md:px-8">
+  <div class="fixed top-0 z-50 w-full bg-white py-4 text-black shadow-md md:px-8">
     <UContainer v-if="$route.name === '404'">
       <Header404 />
     </UContainer>
-    <UContainer v-else class="flex items-center justify-start gap-4 md:justify-between md:gap-0">
+    <UContainer v-else class="flex items-center gap-4 justify-between md:gap-0">
       <div class="md:hidden">
         <HeaderMobile :routes="routes" />
       </div>

@@ -9,13 +9,19 @@ export type JobItem = {
 };
 
 export type DescriptionItem = {
-  id: string;
+  id: number;
   content: string;
 };
 
+export type DescriptionType = 'DO' | 'NEED' | 'OFFER'
+
 export type JobDescription = {
-  id?: string;
-  icon?: string;
-  title: BrandText;
+ type: DescriptionType
   descriptionItems: DescriptionItem[];
 };
+
+export type UiJobDescription = {
+type: DescriptionType
+icon: string
+title: BrandText
+}

@@ -36,10 +36,9 @@
         <p class="text-xs text-gray-950 md:text-base">
           This is short description of Job Description
         </p>
-        <div v-for="desc in jobDescriptions" :key="desc.id">
+        <div v-for="desc in jobDescriptions" :key="desc.type">
           <RecruitmentJobDescription
-            :icon="desc.icon"
-            :title="desc.title"
+            :type="desc.type"
             :description-items="desc.descriptionItems"
           />
         </div>
@@ -110,105 +109,90 @@ const jobItems = ref<JobItem[]>([
 
 const jobDescriptions = ref<JobDescription[]>([
   {
-    icon: 'i-heroicons-code-bracket',
-    title: {
-      prefix: 'What you will',
-      label: 'do',
-      color: 'primary',
-    },
+    type: 'DO',
     descriptionItems: [
       {
-        id: '1',
+        id: 1,
         content:
           'Craft interface text for the end-to-end user experience, including but not limited to onboarding, error messages, buttons, instructions,...',
       },
       {
-        id: '2',
+        id: 2,
         content:
           'Use your writing and editing skills, empathy, and logic to inform writing choices;',
       },
       {
-        id: '3',
+        id: 3,
         content:
           'Drive vision for product language. Take part in building best practices and principles for Zalo with Zalo Content Guidelines;',
       },
       {
-        id: '4',
+        id: 4,
         content:
           'Work closely with UX Designers and Product Owners using tools like Figma and Notion. Influence and adapt to stakeholders and their feedback;',
       },
       {
-        id: '5',
+        id: 5,
         content:
           'Educate your partners on the role of UX writing and content strategy throughout the product development process...',
       },
     ],
   },
   {
-    icon: 'i-heroicons-academic-cap',
-    title: {
-      prefix: 'What you will',
-      label: 'need',
-      color: 'red-500',
-    },
+    type: 'NEED',
     descriptionItems: [
       {
-        id: '1',
+        id: 1,
         content:
           'Craft interface text for the end-to-end user experience, including but not limited to onboarding, error messages, buttons, instructions,...',
       },
       {
-        id: '2',
+        id: 2,
         content:
           'Use your writing and editing skills, empathy, and logic to inform writing choices;',
       },
       {
-        id: '3',
+        id: 3,
         content:
           'Drive vision for product language. Take part in building best practices and principles for Zalo with Zalo Content Guidelines;',
       },
       {
-        id: '4',
+        id: 4,
         content:
           'Work closely with UX Designers and Product Owners using tools like Figma and Notion. Influence and adapt to stakeholders and their feedback;',
       },
       {
-        id: '5',
+        id: 5,
         content:
           'Educate your partners on the role of UX writing and content strategy throughout the product development process...',
       },
     ],
   },
   {
-    icon: 'i-heroicons-gift',
-    title: {
-      prefix: 'What we',
-      label: 'offer',
-      color: 'green-500',
-    },
+    type: 'OFFER',
     descriptionItems: [
       {
-        id: '1',
+        id: 1,
         content:
           'Craft interface text for the end-to-end user experience, including but not limited to onboarding, error messages, buttons, instructions,...',
       },
       {
-        id: '2',
+        id: 2,
         content:
           'Use your writing and editing skills, empathy, and logic to inform writing choices;',
       },
       {
-        id: '3',
+        id: 3,
         content:
           'Drive vision for product language. Take part in building best practices and principles for Zalo with Zalo Content Guidelines;',
       },
       {
-        id: '4',
+        id: 4,
         content:
           'Work closely with UX Designers and Product Owners using tools like Figma and Notion. Influence and adapt to stakeholders and their feedback;',
       },
       {
-        id: '5',
+        id: 5,
         content:
           'Educate your partners on the role of UX writing and content strategy throughout the product development process...',
       },

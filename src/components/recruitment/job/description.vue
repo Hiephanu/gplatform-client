@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-col gap-4">
+  <div v-if="jobDescription" class="flex flex-col gap-4">
     <div class="flex items-center gap-2 text-2xl font-medium">
-      <UIcon :name="icon" />
+      <UIcon :name="jobDescription.icon" />
       <h2 class="text-gray-950">
         <CommonBrandText
-          :prefix="title.prefix"
-          :color="title.color"
-          :label="title.label"
+          :prefix="jobDescription.title.prefix"
+          :color="jobDescription.title.color"
+          :label="jobDescription.title.label"
           size="2xl"
         />
       </h2>
@@ -20,7 +20,41 @@
 </template>
 
 <script setup lang="ts">
-import type { JobDescription } from '~/types/recruitment/job';
+import type { JobDescription , UiJobDescription} from '~/types/recruitment/job';
 
-const { title, icon, descriptionItems } = defineProps<JobDescription>();
+const { type, descriptionItems } = defineProps<JobDescription>();
+
+const jobDescription = computed(() => {
+  return uiJobDescription.value.find((item) => item.type === type);
+});
+
+const uiJobDescription = ref<UiJobDescription[]>([
+  {
+    type: 'DO',
+    icon: 'i-heroicons-code-bracket',
+    title: {
+      prefix: 'What you will',
+      label: 'do',
+      color: 'primary',
+    },
+  },
+  {
+    type: 'NEED',
+    icon: 'i-heroicons-academic-cap',
+    title: {
+      prefix: 'What you will',
+      label: 'need',
+      color: 'red-500',
+    },
+  },
+  {
+    type: 'NEED',
+    icon: 'i-heroicons-gift',
+    title: {
+      prefix: 'What we',
+      label: 'offer',
+      color: 'green-500',
+    },
+  }
+]);
 </script>
