@@ -7,7 +7,7 @@ export default defineNuxtConfig({
         'DM Sans': [400, 700],
       },
     },
-  ], '@pinia/nuxt', '@nuxt/eslint', '@nuxthub/core'],
+  ], '@pinia/nuxt', '@nuxt/eslint'],
 
   colorMode: {
     preference: 'light',

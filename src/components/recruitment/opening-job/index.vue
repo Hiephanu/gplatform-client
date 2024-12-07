@@ -21,7 +21,7 @@
       </div>
     </div>
     <div v-if="isLoading" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <div v-for="searchQuery in searchQueryList" :key="searchQuery.id">
+      <div v-for="n in 6" :key="n">
         <RecruitmentJobItemSkeleton></RecruitmentJobItemSkeleton>
       </div>
     </div>
@@ -40,18 +40,19 @@
           ></RecruitmentJobItem>
         </div>
       </div>
-      <p v-else></p>
+      <p v-else>More opening opening at this position is coming soon!</p>
       <div class="flex justify-center">
-        <UButton
-        :color="searchQueryList.length > 0 ? 'white' : 'primary'"
-        :label="searchQueryList.length > 0 ? 'See more' : 'Browse all jobs'"
-        icon="i-heroicons-arrow-small-right-solid"
-        class="rounded-full"
-        size="xl"
-        trailing
-      ></UButton>
+        <NuxtLink :to="{ path: '/recruitment/opening', query: { department: activeTeamFilter }}">
+          <UButton
+            :color="searchQueryList.length > 0 ? 'white' : 'primary'"
+            :label="searchQueryList.length > 0 ? 'See more' : 'Browse all jobs'"
+            icon="i-heroicons-arrow-small-right-solid"
+            class="rounded-full"
+            size="xl"
+            trailing
+          ></UButton>
+        </NuxtLink>
       </div>
-      
     </div>
   </div>
 </template>
