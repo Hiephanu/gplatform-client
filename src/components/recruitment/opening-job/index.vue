@@ -59,10 +59,7 @@
 
 <script setup lang="ts">
 import type { DescriptionItem, JobItem } from '~/types/recruitment/job';
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
-
-const breakpoints = useBreakpoints(breakpointsTailwind);
-const isDesktop = breakpoints.greater('md');
+const { isDesktop } = useResponsive();
 
 const isLoading = ref(true);
 const activeTeamFilter = ref(1);

@@ -1,9 +1,8 @@
 <template>
-  <UContainer
-    class="-mt-20 flex flex-col-reverse items-center justify-center gap-8 h-screen lg:flex-row lg:justify-between"
-    :ui="{ constrained: '2xl:max-w-7xl lg:max-w-full max-w-3xl' }"
+  <div
+    class="-m-20 sm:mt-10 lg:-mt-20 flex min-h-screen flex-col-reverse items-center gap-4 justify-center max-w-screen-xl mx-auto lg:flex-row"
   >
-    <div class="flex flex-col justify-center gap-8 lg:basis-3/5 lg:justify-between">
+    <div class="flex flex-col justify-center gap-4 md:gap-8 lg:basis-3/5 lg:justify-between">
       <CommonBrandText
         label="Learn"
         suffix="with students"
@@ -38,21 +37,25 @@
         ></UButton>
       </div>
     </div>
-    <div class="flex w-full max-w-64 basis-2/5 sm:max-w-lg">
-      <NuxtImg
-        src="/landing_img.png"
-        alt="landing_img"
-        class="h-full w-full object-contain"
-      ></NuxtImg>
+    <div
+      class="relative flex overflow-visible lg:basis-2/5 flex-col items-center justify-center"
+    >
+      <NuxtImg class="w-24 md:w-36 h-auto my-[140px] md:my-[240px]" src="/gdsc-logo.png"></NuxtImg>
+      <InspiraRipple
+        :base-circle-size="isDesktop ? 195 : 120"
+        :space-between-circle="isDesktop ? 65 : 35"
+        class="bg-white/5 [mask-image:linear-gradient(to_bottom,white,transparent)]"
+        circle-class="border-primary bg-primary/25 dark:bg-[#fff]/25 rounded-full"
+      />
     </div>
-  </UContainer>
+  </div>
 </template>
 <script lang="ts" setup>
 const emit = defineEmits<{
-  (e: 'handleScroll'): void
-}>()
-
+  (e: 'handleScroll'): void;
+}>();
+const { isDesktop } = useResponsive();
 const handleScroll = () => {
-  emit('handleScroll')
-}
+  emit('handleScroll');
+};
 </script>
