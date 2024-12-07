@@ -17,7 +17,7 @@
     baseCircleOpacity?: number;
     spaceBetweenCircle?: number;
     circleOpacityDowngradeRatio?: number;
-    circleClass?: string;
+    circleClass: string;
     waveSpeed?: number;
     numberOfCircles?: number;
   }

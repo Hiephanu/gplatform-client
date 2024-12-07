@@ -6,10 +6,10 @@
 
 interface Props {
   size?: number;
-  class?: string;
-  opacity?: number;
-  animationDelay?: number;
-  borderStyle?: string;
+  class: string;
+  opacity: number;
+  animationDelay: number;
+  borderStyle: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
