@@ -13,7 +13,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: 210,
+  size: 195,
   opacity: 0.24,
 });
 </script>

@@ -23,11 +23,11 @@
   }
   
   withDefaults(defineProps<Props>(), {
-    baseCircleSize: 210,
+    baseCircleSize: 195,
     baseCircleOpacity: 0.24,
     circleOpacityDowngradeRatio: 0.03,
     waveSpeed: 80,
-    spaceBetweenCircle: 70,
+    spaceBetweenCircle: 65,
     numberOfCircles: 7,
   });
   </script>

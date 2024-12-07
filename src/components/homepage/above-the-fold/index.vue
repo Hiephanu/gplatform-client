@@ -42,7 +42,6 @@
     >
       <NuxtImg preload class="w-24 md:w-36 h-auto my-[140px] md:my-[240px]" src="/gdsc-logo.png"></NuxtImg>
       <InspiraRipple
-        v-if="isDesktop"
         :base-circle-size="isDesktop ? 195 : 120"
         :space-between-circle="isDesktop ? 65 : 35"
         class="bg-white/5 [mask-image:linear-gradient(to_bottom,white,transparent)]"
