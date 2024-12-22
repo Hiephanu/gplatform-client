@@ -3,4 +3,5 @@ export type BrandText = {
   suffix?: string;
   label: string;
   color?: string;
+  isBreak?: boolean;
 };

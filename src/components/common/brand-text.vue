@@ -1,7 +1,7 @@
 <template>
   <div>
-    {{ props.prefix }}
-    <span :class="color">{{ label }}</span>
+    {{ props.prefix }} <br v-if="isBreak">
+    <span :class="color">{{ label }}</span> <br v-if="isBreak">
     {{ props.suffix }}
   </div>
 </template>
@@ -11,6 +11,7 @@ import type { BrandText } from '~/types/component/brand-text';
 
 const props = withDefaults(defineProps<BrandText>(), {
   color: 'primary',
+  isBreak: false
 });
 
 const color = computed(() => {

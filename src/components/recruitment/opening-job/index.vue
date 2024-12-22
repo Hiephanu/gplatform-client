@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-8">
+  <div class="mb-8 max-w-screen-xl mx-4 lg:mx-auto">
     <div class="text-center">
       <div class="flex flex-row items-center justify-center leading-10">
         <CommonBrandText
@@ -9,7 +9,7 @@
         ></CommonBrandText>
       </div>
     </div>
-    <div class="my-10 flex flex-row flex-wrap items-center justify-center gap-4">
+    <div class="my-4 lg:my-10 flex flex-row flex-wrap items-center justify-center gap-4">
       <div v-for="item in department" :key="item.id">
         <UButton
           class="rounded-full"
@@ -28,7 +28,7 @@
     <div v-else>
       <div
         v-if="searchQueryList.length > 0"
-        class="my-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
+        class="mb-4 lg:mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
       >
         <div v-for="searchQuery in searchQueryList" :key="searchQuery.id">
           <RecruitmentJobItem
