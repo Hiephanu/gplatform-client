@@ -1,5 +1,5 @@
 <template>
-  <UForm :state="formState" class="mx-4 mt-10 flex w-full max-w-[800px] flex-col gap-8">
+  <UForm :state="formState" class="mx-4 flex w-full max-w-[800px] flex-col gap-8">
     <div class="flex w-full flex-col gap-8 md:flex-row">
       <UFormGroup label="Full name" required class="w-full">
         <UInput
@@ -22,7 +22,7 @@
           />
 
           <template #panel="{ close }">
-            <VDatePicker v-model="formState.dob" @close="close" />
+            <DatePicker v-model="formState.dob" required @close="close" />
           </template>
         </UPopover>
       </UFormGroup>
@@ -128,10 +128,9 @@
     </UFormGroup>
 
     <UFormGroup
-      label="Upload your CV (PDF format, max 20MB)"
-      class="flex flex-col items-start justify-between gap-2 md:flex-row md:items-center"
+      label="Upload your CV (PDF format, max 5MB)"
+      class="flex flex-col items-start sm:justify-between gap-2 md:flex-row md:items-center"
       :description="(selectedFile && selectedFile.name) || 'Your file name goes here'"
-      required
       :error="fileError"
     >
       <RecruitmentFormUploadButton :status="uploadButtonStatus" @click="open()" />

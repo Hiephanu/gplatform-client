@@ -4,7 +4,6 @@
     :icon="buttonAttributes.icon"
     :disabled="buttonAttributes.disabled"
     :color="buttonAttributes.color"
-    class="flex w-[268px] justify-center"
     size="xl"
   />
 </template>

@@ -1,6 +1,12 @@
 <template>
-  <div class="px-0 py-2 md:px-8 md:py-4">
-    <UContainer> <UBreadcrumb :links="links" divider="/" /></UContainer>
+  <div class="py-2 md:py-4">
+    <UBreadcrumb
+      :ui="{
+        ol: 'flex-wrap',
+      }"
+      :links="links"
+      divider="/"
+    />
   </div>
 </template>
 

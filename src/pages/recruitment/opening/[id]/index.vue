@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col gap-8 md:gap-16">
+  <section class="flex flex-col gap-8">
     <CommonBreadcumb :links="beadcumbLinks" />
     <UContainer class="flex w-full flex-col items-start justify-center gap-8 md:flex-row md:gap-16">
       <div class="flex flex-1 flex-col gap-4 md:gap-8">
@@ -48,7 +48,7 @@
           </NuxtLink>
         </div>
       </div>
-      <div class="flex flex-col items-center justify-center gap-8 md:justify-start">
+      <div class="flex flex-col items-center justify-center gap-8 sm:justify-start">
         <h1 class="text-2xl font-medium text-gray-950 md:text-3xl">You may also fit</h1>
         <div v-for="job in jobItems" :key="job.id" class="max-w-[350px]">
           <RecruitmentJobItem

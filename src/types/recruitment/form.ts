@@ -5,7 +5,7 @@ export type UploadButton = {
   label: string;
   disabled: boolean;
   icon: string;
-  color: string;
+  color: ButtonColor | undefined;
 };
 
 export type UploadButtonVariant = {

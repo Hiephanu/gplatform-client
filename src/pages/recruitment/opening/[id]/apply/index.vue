@@ -1,8 +1,8 @@
 <template>
-  <section class="flex flex-col gap-8 md:gap-16">
+  <section class="flex flex-col">
     <CommonBreadcumb :links="breadcrumbLinks" />
-    <UContainer class="mt-16 flex flex-col items-center">
-      <span class="text-center text-5xl font-bold">{{ jobTitle }}</span>
+    <UContainer class="flex flex-col items-center">
+      <h1 class="text-center text-2xl sm:text-5xl font-bold my-4 sm:my-8">{{ jobTitle }}</h1>
       <RecruitmentForm />
     </UContainer>
   </section>
