@@ -10,7 +10,9 @@
 <script setup>
 useHead({
   meta: [
+  { name: 'keywords', content: 'gdsc, gdg, hanu, gdschanu, google, tech, community, develop, student, startup' },
     // Open Graph metadata
+    { property: 'og:description', content: 'GDSC HANU represented Hanoi University in Google Developer Student Club Community. We focus on Software Engineer and Develop Community' },
     { property: 'og:image', content: '/thumbnail.png' }, // Thumbnail image
     { property: 'og:image:width', content: '1200' }, // Recommended width
     { property: 'og:image:height', content: '630' }, // Recommended height
