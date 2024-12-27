@@ -1,6 +1,6 @@
 <template>
   <div
-    class="-m-20 mx-auto flex min-h-screen max-w-screen-xl flex-col-reverse items-center justify-center gap-4 sm:mt-10 lg:-mt-20 lg:flex-row"
+    class="-mt-20 mx-auto flex min-h-screen max-w-screen-xl flex-col-reverse items-center justify-center gap-4 sm:mt-10 lg:-mt-20 lg:flex-row"
   >
     <div class="flex flex-col justify-center gap-4 md:gap-8 lg:basis-3/5 lg:justify-between">
       <CommonBrandText
