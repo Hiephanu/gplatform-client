@@ -1,9 +1,13 @@
 <template>
-  <UForm :state="formState" class="mx-4 flex w-full max-w-[800px] flex-col gap-8">
+  <UForm
+    @submit.prevent="handleSubmit"
+    :state="formState"
+    class="mx-4 flex w-full max-w-[800px] flex-col gap-8"
+  >
     <div class="flex w-full flex-col gap-8 md:flex-row">
-      <UFormGroup label="Full name" required class="w-full">
+      <UFormGroup label="Full Name" required class="w-full">
         <UInput
-          v-model="formState.fullName"
+          v-model="formState.full_name"
           size="xl"
           color="white"
           placeholder="Enter your full name..."
@@ -32,15 +36,16 @@
       <UFormGroup label="Email" required class="grow">
         <UInput
           v-model="formState.email"
+          type="email"
           size="xl"
           color="white"
-          placeholder="Enter your email.."
+          placeholder="Enter your email..."
           required
         />
       </UFormGroup>
-      <UFormGroup label="Phone number" required class="grow">
+      <UFormGroup label="Phone Number" required class="grow">
         <UInput
-          v-model="formState.phoneNumber"
+          v-model="formState.phone_number"
           size="xl"
           color="white"
           placeholder="Enter your phone number..."
@@ -50,76 +55,64 @@
     </div>
 
     <div class="flex w-full flex-col gap-8 md:flex-row">
-      <UFormGroup label="University/ Institute" required class="w-full">
+      <UFormGroup label="Facebook Link" required class="w-full">
         <UInput
-          v-model="formState.university"
+          v-model="formState.facebook_link"
           size="xl"
           color="white"
-          placeholder="Enter your University/ Institute..."
+          placeholder="Enter your Facebook link..."
           required
         />
       </UFormGroup>
 
-      <UFormGroup label="Year" required class="w-full">
-        <USelect
-          v-model="formState.year"
+      <UFormGroup label="University/Institute" required class="w-full">
+        <UInput
+          v-model="formState.university"
           size="xl"
-          placeholder="Select"
-          :options="yearOptions"
+          color="white"
+          placeholder="Enter your University/Institute..."
           required
         />
       </UFormGroup>
     </div>
 
-    <UFormGroup label="Facebook Link" required class="w-full">
-      <UInput
-        v-model="formState.facebook"
+    <UFormGroup label="Academic Year" required class="w-full">
+      <USelect
+        v-model="formState.academic_year"
         size="xl"
-        color="white"
-        placeholder="Enter your Facebook link..."
+        placeholder="Select"
+        :options="yearOptions"
         required
       />
     </UFormGroup>
 
     <UFormGroup
-      label="What are your short-term (1- 3 years) and long-term (5 - 15 years) plans?"
+      label="What are your short-term (1-3 years) and long-term (5-15 years) plans?"
       required
       color="black"
     >
-      <UTextarea v-model="formState.plans" required />
+      <UTextarea v-model="formState.future_plan" required />
     </UFormGroup>
 
-    <UFormGroup label="What are your related experience to this position?" required color="black">
+    <UFormGroup label="What are your related experiences to this position?" required color="black">
       <UTextarea v-model="formState.experience" required />
     </UFormGroup>
 
-    <UFormGroup
-      label="Why are you interested in joining Google Developer Student Clubs - HANU?"
-      required
-      color="black"
-    >
-      <UTextarea v-model="formState.interested" required />
+    <UFormGroup label="Why are you interested in this opportunity?" required color="black">
+      <UTextarea v-model="formState.interest_reason" required />
     </UFormGroup>
 
-    <UFormGroup
-      label="How do you envision contributing to Google Developer Student Clubs - HANU?"
-      required
-      color="black"
-    >
-      <UTextarea v-model="formState.contributing" required />
+    <UFormGroup label="How do you envision contributing?" required color="black">
+      <UTextarea v-model="formState.contribution_vision" required />
     </UFormGroup>
 
-    <UFormGroup
-      label="What are your expectations from being a member of Google Developer Student Clubs - HANU?"
-      required
-      color="black"
-    >
+    <UFormGroup label="What are your expectations from being a member?" required color="black">
       <UTextarea v-model="formState.expectations" required />
     </UFormGroup>
 
-    <UFormGroup label="How do your hear about this position?" required color="black">
+    <UFormGroup label="How did you hear about this opportunity?" required color="black">
       <USelect
-        v-model="formState.hearAbout"
+        v-model="formState.referral_source"
         size="xl"
         placeholder="Select"
         :options="accessOptions"
@@ -129,17 +122,12 @@
 
     <UFormGroup
       label="Upload your CV (PDF format, max 5MB)"
-      class="flex flex-col items-start sm:justify-between gap-2 md:flex-row md:items-center"
+      class="flex flex-col items-start gap-2 sm:justify-between md:flex-row md:items-center"
       :description="(selectedFile && selectedFile.name) || 'Your file name goes here'"
       :error="fileError"
     >
       <RecruitmentFormUploadButton :status="uploadButtonStatus" @click="open()" />
     </UFormGroup>
-
-    <div class="flex flex-col gap-2">
-      <UCheckbox label="Agree with GPlatform Policy" required />
-      <UCheckbox label="Allow GPlatform send email to you" required />
-    </div>
 
     <div class="flex justify-center">
       <UButton type="submit" :ui="{ rounded: 'rounded-full' }" size="xl"
@@ -151,27 +139,39 @@
 
 <script setup lang="ts">
 import { useFileDialog } from '@vueuse/core';
+import { useSubmitApplication } from '~/composables/job/useSubmitApplication';
 import type { ApplyForm, UploadButtonStatus } from '~/types/recruitment/form';
+const { isSubmitting, submissionError, submitApplication } = useSubmitApplication();
 
+const handleSubmit = async () => {
+  const result = await submitApplication(formState);
+
+  if (result.success) {
+    alert('Application submitted successfully!');
+    // Optionally, reset the form or redirect the user
+  } else {
+    alert(`Submission failed: ${result.error}`);
+  }
+};
 const formState = reactive<ApplyForm>({
-  fullName: '',
+  full_name: '',
   dob: null,
   email: '',
-  phoneNumber: '',
-  facebook: '',
+  phone_number: '',
+  facebook_link: '',
   university: '',
-  year: '',
-  plans: '',
+  academic_year: '',
+  future_plan: '',
   experience: '',
-  interested: '',
-  contributing: '',
+  interest_reason: '',
+  contribution_vision: '',
   expectations: '',
-  hearAbout: '',
+  referral_source: '',
 });
 
 const uploadButtonStatus = ref<UploadButtonStatus>('default');
 
-const MAX_FILE_SIZE = 20 * 1024 * 1024;
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 const { files, open } = useFileDialog({
   accept: '.pdf',
@@ -183,7 +183,7 @@ const fileError = ref<string>('');
 
 watch(files, (newFiles: FileList | null) => {
   if (newFiles && newFiles[0]?.size > MAX_FILE_SIZE) {
-    fileError.value = 'File size exceeds 20MB. Please upload a smaller file.';
+    fileError.value = 'File size exceeds 5MB. Please upload a smaller file.';
     selectedFile.value = null;
   } else {
     fileError.value = '';
@@ -192,57 +192,21 @@ watch(files, (newFiles: FileList | null) => {
 });
 
 const yearOptions = ref([
-  {
-    label: '1st',
-    value: '1',
-  },
-  {
-    label: '2nd',
-    value: '2',
-  },
-  {
-    label: '3rd',
-    value: '3',
-  },
-  {
-    label: '4th',
-    value: '4',
-  },
-  {
-    label: '5th',
-    value: '5',
-  },
-  {
-    label: 'Others',
-    value: 'Others',
-  },
+  { label: '1st', value: 1 },
+  { label: '2nd', value: 2 },
+  { label: '3rd', value: 3 },
+  { label: '4th', value: 4 },
+  { label: '5th', value: 5 },
+  { label: 'Others', value: 0 },
 ]);
 
 const accessOptions = ref([
-  {
-    label: 'Social Media',
-    value: 'Social Media',
-  },
-  {
-    label: 'Website',
-    value: 'Website',
-  },
-  {
-    label: 'Friends',
-    value: 'Friends',
-  },
-  {
-    label: 'Advertisement',
-    value: 'Advertisement',
-  },
-  {
-    label: 'Email Marketing',
-    value: 'Email Marketing',
-  },
-  {
-    label: 'School',
-    value: 'School',
-  },
+  { label: 'Social Media', value: 'Social Media' },
+  { label: 'Website', value: 'Website' },
+  { label: 'Friends', value: 'Friends' },
+  { label: 'Advertisement', value: 'Advertisement' },
+  { label: 'Email Marketing', value: 'Email Marketing' },
+  { label: 'School', value: 'School' },
 ]);
 
 const formattedDate = computed(() => {

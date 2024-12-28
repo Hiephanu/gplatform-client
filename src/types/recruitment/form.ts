@@ -5,7 +5,7 @@ export type UploadButton = {
   label: string;
   disabled: boolean;
   icon: string;
-  color: ButtonColor | undefined;
+  color: string[] | undefined;
 };
 
 export type UploadButtonVariant = {
@@ -13,17 +13,17 @@ export type UploadButtonVariant = {
 };
 
 export type ApplyForm = {
-  fullName: string;
+  full_name: string;
   dob: Date | null;
   email: string;
-  phoneNumber: string;
-  facebook: string;
+  phone_number: string;
+  facebook_link: string;
   university: string;
-  year: string;
-  plans: string;
+  academic_year: string;
+  future_plan: string;
   experience: string;
-  interested: string;
-  contributing: string;
+  interest_reason: string;
+  contribution_vision: string;
   expectations: string;
-  hearAbout: string;
+  referral_source: string;
 };
