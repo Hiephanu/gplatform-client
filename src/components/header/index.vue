@@ -3,6 +3,18 @@ const routes = ref([
   { path: '/members', name: 'Members' },
   { path: '/recruitment', name: 'Recruitment' },
 ]);
+
+const supabase = useSupabaseClient()
+
+const signInWithGoogle = async ()=> {
+  const { error } =  await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: 'http://localhost:3000/auth/callback'
+    }
+  })
+}
+
 </script>
 
 <template>
@@ -27,7 +39,7 @@ const routes = ref([
       </ul>
       <div class="flex gap-4">
         <CommonSearch size="lg" />
-        <UButton size="lg" class="rounded-full" label="Sign in" />
+        <UButton size="lg" class="rounded-full" label="Sign in" @click='signInWithGoogle'/>
       </div>
     </UContainer>
   </div>
