@@ -13,11 +13,11 @@
 const route = useRoute();
 
 useHead(() => ({
-  title: `${route.meta.title} - Google Developer Student Clubs - HANU`,
+  title: `${route.meta.title} | Google Developer Student Clubs - HANU`,
   meta: [
     {
       property: "og:title",
-      content: `${route.meta.title} - Google Developer Student Clubs - HANU`,
+      content: `${route.meta.title} | Google Developer Student Clubs - HANU`,
     },
   ],
 }));

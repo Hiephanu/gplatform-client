@@ -9,7 +9,7 @@
 
   <UModal v-model="isOpen" fullscreen>
     <div class="p-4 flex min-h-screen flex-col justify-between">
-      <div class="mb-4 flex items-center justify-between">
+      <div class="mb-8 flex items-center justify-between">
         <CommonLogo @click="isOpen = false" />
         <UButton
           size="md"
@@ -19,7 +19,7 @@
           @click="isOpen = false"
         />
       </div>
-      <ul class="flex w-full flex-1 flex-col gap-8 text-base">
+      <ul class="flex w-full flex-1 flex-col gap-4 text-lg">
         <li
           v-for="route in props.routes"
           :key="route.path"
