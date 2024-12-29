@@ -1,5 +1,5 @@
 import type { ApplyForm } from "~/types/recruitment/form";
-
+const client = useSupabaseClient()
 type SubmitApplicationResult = {
   success: boolean;
   error?: string;
@@ -14,7 +14,7 @@ export const useSubmitApplication = () => {
     submissionError.value = null;
 
     try {
-      const { error } = await supabase.from('job_applications').insert([formData]);
+      const { error } = await client.from('job_applications').insert([formData]);
 
       if (error) {
         submissionError.value = error.message;

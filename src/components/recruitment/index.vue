@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex min-h-screen w-screen flex-col items-center justify-center">
+  <div class="relative -mt-16 flex min-h-screen max-w-screen flex-col items-center justify-center overflow-hidden">
     <div
       class="px-1 pb-[72px] absolute z-10 flex flex-col gap-6 sm:gap-8"
     >
@@ -12,7 +12,7 @@
     <InspiraBackgroundParticles
       class="absolute inset-0"
       :quantity="400"
-      :ease="50"
+      :ease="100"
       :color="'#0284c7'"
       :staticity="10"
       refresh

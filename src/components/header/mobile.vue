@@ -7,17 +7,28 @@
     @click="isOpen = true"
   />
 
-  <USlideover v-model="isOpen" side="left">
-    <div class="flex flex-1 flex-col items-center justify-center gap-8 p-4">
-      <CommonLogo />
+  <UModal v-model="isOpen" fullscreen>
+    <div class="p-4 flex min-h-screen flex-col justify-between">
+      <div class="mb-4 flex items-center justify-between">
+        <CommonLogo @click="isOpen = false" />
+        <UButton
+          size="md"
+          color="gray"
+          variant="ghost"
+          icon="i-heroicons-x-mark-20-solid"
+          @click="isOpen = false"
+        />
+      </div>
       <ul class="flex w-full flex-1 flex-col gap-8 text-base">
         <li
           v-for="route in props.routes"
           :key="route.path"
           class="py-2"
-          :class="$route.path === route.path ? 'border-primary border-b' : ''"
+          :class="$route.path === route.path ? 'text-primary-500' : ''"
         >
-          <NuxtLink :to="route.path" class="px-1.5 py-2">{{ route.name }}</NuxtLink>
+          <NuxtLink :to="route.path" class="px-1.5 py-2" @click="isOpen = false">{{
+            route.name
+          }}</NuxtLink>
         </li>
       </ul>
       <div class="flex w-full flex-col gap-2 md:gap-4">
@@ -30,7 +41,7 @@
         />
       </div>
     </div>
-  </USlideover>
+  </UModal>
 </template>
 
 <script setup lang="ts">

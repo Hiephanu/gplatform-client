@@ -16,12 +16,9 @@
       <div class="basis-1/2">
         <div v-for="job in jobNavigationList" :key="job.jobId">
           <NuxtLink to="/recruitment"
-            ><UCard
-              class="mb-4 cursor-pointer rounded-full px-4 py-2 transition duration-300 ease-in-out hover:bg-blue-50 lg:py-3 xl:py-4"
-              :ui="{ body: '' }"
-            >
-              <div class="flex flex-row items-center justify-between">
-                <div class="flex flex-row items-center gap-1">
+            ><UButton class="w-full mb-2 sm:mb-4" :ui="{ rounded: 'rounded-full' }" size="xl" color="white">
+              <div class="flex items-center w-full justify-between">
+                <div class="flex items-center gap-1">
                   <h2 class="text-sm sm:text-base">{{ job.jobName }}</h2>
                   <CommonBrandText
                     :label="posNumberText(job.posNumber)"
@@ -29,7 +26,7 @@
                   ></CommonBrandText>
                 </div>
                 <UIcon name="i-heroicons-arrow-up-right-solid" class="w-15 h-15"></UIcon>
-              </div> </UCard
+              </div> </UButton
           ></NuxtLink>
         </div>
       </div>
@@ -40,7 +37,7 @@
         </div>
         <div class="lg:top-3/5 absolute top-1/2 flex flex-col gap-2 px-4 sm:gap-3 lg:px-8">
           <h1
-            class="text-center text-base font-bold text-white sm:text-3xl md:text-2xl lg:text-3xl"
+            class="text-center text-base font-semibold text-white sm:text-3xl md:text-2xl lg:text-3xl"
           >
             Are you a first year student or have no experience?
           </h1>
@@ -48,7 +45,7 @@
             label="Visit G<Technical/>Trainee Page"
             trailing-icon="i-heroicons-arrow-right-solid"
             size="sm"
-            class="mx-auto rounded-2xl border border-2 border-solid border-white text-white hover:text-black"
+            class="mx-auto rounded-2xl border border-solid border-white text-white hover:text-black"
             color="white"
             variant="ghost"
             @click="$router.push('/recruitment/trainee')"

@@ -19,7 +19,7 @@
       <UContainer class="my-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         <div v-for="testimonial in testimonials" :key="testimonial.testimonialId">
           <UCard class="flex flex-col">
-            <div class="mb-5">
+            <div class="mb-2 sm:mb-5">
               <p class="text-xs leading-6 sm:text-base">{{ testimonial.comment }}</p>
             </div>
             <div class="flex flex-row items-center gap-2 md:gap-4">

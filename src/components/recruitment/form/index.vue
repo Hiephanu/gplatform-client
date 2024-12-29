@@ -139,20 +139,22 @@
 
 <script setup lang="ts">
 import { useFileDialog } from '@vueuse/core';
-import { useSubmitApplication } from '~/composables/job/useSubmitApplication';
+
 import type { ApplyForm, UploadButtonStatus } from '~/types/recruitment/form';
-const { isSubmitting, submissionError, submitApplication } = useSubmitApplication();
-
 const handleSubmit = async () => {
-  const result = await submitApplication(formState);
+    const client = useSupabaseClient();
 
-  if (result.success) {
-    alert('Application submitted successfully!');
-    // Optionally, reset the form or redirect the user
-  } else {
-    alert(`Submission failed: ${result.error}`);
+    const { data, error } = await client.from('job_applications').insert({
+      ...formState,
+      cv: selectedFile.value ? selectedFile.value.name : '', 
+    });
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return data;
   }
-};
 const formState = reactive<ApplyForm>({
   full_name: '',
   dob: null,
