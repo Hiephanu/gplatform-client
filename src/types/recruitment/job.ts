@@ -1,12 +1,24 @@
 import type { BrandText } from '../component/brand-text';
 
-export type JobItem = {
+export type JobDetail = {
   id?: string;
   title: string;
   team: string;
-  tag?: 'Hot' | 'New';
+  is_spotlight: boolean;
   description: string;
+  short_description: string;
+  minimum_qualifications: string;
+  responsibilities: string;
+  benefits: string;
+  expire_date: Date;
 };
+
+export type JobItem = {
+  id: string;
+  title: string;
+  team: string;
+  short_description: string
+}
 
 export type DescriptionItem = {
   id: number;
