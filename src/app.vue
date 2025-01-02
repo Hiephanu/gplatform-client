@@ -1,5 +1,7 @@
 <template>
   <div>
+    <Analytics />
+    <SpeedInsights />
     <NuxtLayout>
       <NuxtLoadingIndicator />
       <NuxtPage />
@@ -8,6 +10,8 @@
 </template>
 
 <script setup>
+import { Analytics } from '@vercel/analytics/nuxt'
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 useHead({
   meta: [
   { name: 'keywords', content: 'gdsc, gdg, hanu, gdschanu, google, tech, community, develop, student, startup' },

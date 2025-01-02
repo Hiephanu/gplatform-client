@@ -30,6 +30,8 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "@types/node": "^20.14.8",
+    "@vercel/analytics": "^1.4.1",
+    "@vercel/speed-insights": "^1.1.0",
     "@vueuse/core": "^11.0.1",
     "date-fns": "^4.1.0",
     "pinia": "^2.1.7",
