@@ -3,12 +3,13 @@ import type { JobItem } from "~/types/recruitment/job";
 export const useSearchJob = () => {
     const jobList = ref<JobItem[] | null>(null);
     const fetchError = ref<string | null>(null);
+    const isLoading = ref<boolean>(false)
     const supabase = useSupabaseClient();
 
     const searchJob = async (page: number, pageSize: number, searchText: string = '', team: string = '') => {
         const from = (page -1)* pageSize;
         const to = from + pageSize - 1;
-
+        isLoading.value = true;
         try {
             let query = supabase
                 .from('jobs')
@@ -30,17 +31,21 @@ export const useSearchJob = () => {
             }
 
             jobList.value = data as JobItem[] || null;
+
             return { success: true };
         } catch (err: unknown) {
             const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
             fetchError.value = errorMessage;
             return { success: false, error: errorMessage };
+        } finally {
+            isLoading.value = false
         }
     };
 
     return {
         jobList,
         fetchError,
+        isLoading,
         searchJob
     };
 };
