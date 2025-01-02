@@ -16,7 +16,6 @@ const handleOAuthCallback = async () => {
         return;
       }
       
-      console.log('session data',data)
       router.push('/');
     } catch (error) {
       console.error('Error during OAuth callback handling:', error);
