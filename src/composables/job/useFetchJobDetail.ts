@@ -29,6 +29,7 @@ export const useFetchJobDetail = () => {
     return {
         jobDetail,
         fetchError, 
-        fetchJobDetail
+        fetchJobDetail,
+        isLoading
     }
 }

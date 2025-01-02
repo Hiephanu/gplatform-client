@@ -30,6 +30,7 @@ export const useFetchListJob = () => {
     return {
         jobList,
         fetchError, 
-        fetchJobList
+        fetchJobList,
+        isLoading
     }
 }
